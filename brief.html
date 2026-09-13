@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BLUE LAMP — file a brief</title>
+  <meta name="description" content="One paragraph to Chris. Name, what the site should do, who it is for, budget if you have one, live URL if you already have one." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Sora:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            desk: "#07080B",
+            lamp: "#0C1018",
+            ink: "#E8EDF7",
+            mute: "#7A8496",
+            live: "#4D8BFF",
+            heat: "#FF2B3A"
+          },
+          fontFamily: {
+            display: ["Bebas Neue", "Impact", "sans-serif"],
+            sans: ["Sora", "ui-sans-serif", "system-ui", "sans-serif"],
+            mono: ["IBM Plex Mono", "ui-monospace", "monospace"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background:
+        radial-gradient(640px 360px at 20% -8%, rgba(77,139,255,.22), transparent 58%),
+        radial-gradient(320px 200px at 96% 0%, rgba(255,43,58,.10), transparent 50%),
+        #07080B;
+      color: #E8EDF7;
+    }
+    .tick {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+    .pane {
+      background: rgba(12,16,24,.86);
+      border: 1px solid rgba(77,139,255,.16);
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-desk/80 backdrop-blur">
+    <div class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
+      <a href="index.html" class="font-display text-3xl tracking-wide text-ink">BLUE LAMP</a>
+      <nav class="flex gap-5 tick text-mute">
+        <a class="hover:text-ink" href="index.html#job">Job</a>
+        <a class="hover:text-ink" href="index.html#board">Board</a>
+        <a class="text-heat" href="brief.html">File a brief</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 pb-24">
+    <section class="pane mt-7 px-5 py-10 md:px-10 md:py-14">
+      <p class="tick text-heat">Copy desk · one field · own page</p>
+      <h1 class="mt-3 font-display text-6xl leading-none text-ink md:text-8xl">SAY THE THING.</h1>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-ink/70">
+        No discovery call. Name, what you want the site to do, who it is for, budget if you have one, live URL if you already have one.
+      </p>
+      <form id="brief-form" class="mt-8 max-w-xl">
+        <label class="tick text-mute" for="para">The paragraph</label>
+        <textarea id="para" name="para" rows="10" required placeholder="Name. What it does. Who it’s for. Budget if you have one. Live URL if you want the board." class="mt-2 w-full resize-y border border-white/15 bg-desk px-4 py-3 text-ink outline-none focus:border-live"></textarea>
+        <button type="submit" class="mt-4 bg-live px-6 py-3 font-display text-xl tracking-wide text-desk hover:bg-heat">SEND TO CHRIS</button>
+        <p class="mt-3 font-mono text-[11px] text-mute">Opens mail to citruswill2@gmail.com with the paragraph prefilled. No hosted form on this budget.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10">
+    <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 px-4 py-6 tick text-mute">
+      <a class="hover:text-ink" href="index.html">← Back to the desk</a>
+      <span>citruswill2@gmail.com</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("brief-form");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var text = (document.getElementById("para").value || "").trim();
+        var body = text || "Name.\nWhat I want the site to do.\nWho it is for.\nBudget if I have one.\nLive URL if I have one.";
+        window.location.href =
+          "mailto:citruswill2@gmail.com" +
+          "?subject=" + encodeURIComponent("BLUE LAMP brief") +
+          "&body=" + encodeURIComponent(body);
+      });
+    })();
+  </script>
+</body>
+</html>
